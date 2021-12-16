@@ -1,0 +1,4 @@
+# ansible -m ping all //simple command to ping all the nodes in ansible.
+
+
+# ansible -m shell -a "uname" webservers:loadbalancers
