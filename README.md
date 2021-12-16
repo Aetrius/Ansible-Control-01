@@ -15,7 +15,8 @@ hosts-dev.ini
 setup-env.yml 
 > The configuration file is for cloud formation.
 
-
+ansible.cfg
+> The configuration file is for the root directory of the ansible app. This will handle the naming conventions and any Ansible specific configurations (custom).
 
 ## Requirements: AWS IAM & EC2
 > Create an IAM role with permissions for EC2 to have access to the S3 bucket needed for the configuration file.
