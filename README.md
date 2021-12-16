@@ -31,6 +31,7 @@ ansible.cfg
  
 > Build an EC2 instance.
 
+> Create the key-pair for connecting to the VMs. Add the key-pair to S3 named ansible-key.pem
 
 ## Install Ansible on Centos
 ```
@@ -49,3 +50,12 @@ crontab -e
 ```
 
 >> [* * * * * /home/ec2-user/ansible-configuration.sh]
+
+
+Copy the keypair 
+```
+aws s3 cp s3://ansible-configuration-master/ansible-key.pem /home/ec2-user/.ssh/ansible-key.pem
+```
+```
+sudo chmod 600 /home/ec2-user/.ssh/ansible-key.pem
+```
