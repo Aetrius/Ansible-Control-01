@@ -30,12 +30,19 @@ setup-env.yml
 
 
 ## Install Ansible on Centos
->> sudo amazon-linux-extras install ansible2
+```
+sudo amazon-linux-extras install ansible2
+```
 
 ## Setup Ansible Automated Pull
->> aws s3 cp s3://ansible-configuration-master/ansible-configuration.sh
->> chmod u+x ansible-configuration.sh
->> crontab -e 
-
+```
+aws s3 cp s3://ansible-configuration-master/ansible-configuration.sh
+```
+```
+chmod u+x ansible-configuration.sh
+```
+```
+crontab -e 
+```
 
 >> [* * * * * /home/ec2-user/ansible-configuration.sh]
