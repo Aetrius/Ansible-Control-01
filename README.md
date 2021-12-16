@@ -21,8 +21,10 @@ This demo project is a test to try out Ansible and Prometheus in AWS.
 >> Build an EC2 instance.
 
 
-#### Install Ansible Centos
+#### Install Ansible on Centos
 >> sudo amazon-linux-extras install ansible2
+
+#### Setup Ansible Automated Pull
 >> aws s3 cp s3://ansible-configuration-master/ansible-configuration.sh
 >> crontab -e 
 
