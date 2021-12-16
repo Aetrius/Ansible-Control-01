@@ -30,6 +30,7 @@ setup-env.yml
 
 ## Setup Ansible Automated Pull
 >> aws s3 cp s3://ansible-configuration-master/ansible-configuration.sh
+>> chmod u+x ansible-configuration.sh
 >> crontab -e 
 
 
