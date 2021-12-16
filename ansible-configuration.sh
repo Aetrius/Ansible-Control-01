@@ -5,3 +5,4 @@ dt=$(date '+%d-%m-%Y_%H:%M:%S');
 echo "Downloaded latest ansible configuration @:" $dt > log/"log-$dt.txt"
 
 aws s3 cp log/"log-$dt.txt" s3://ansible-configuration-master/logging/
+ansible -i hosts-dev.ini --list-hosts all
