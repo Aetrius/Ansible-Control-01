@@ -23,7 +23,9 @@ ansible.cfg
  
 > Create an S3 bucket i.e. ansible-configuration-master
  
-> Copy the ansible-configuration.sh to the S3 bucket, hosts-dev.ini to the S3 bucket, and create a logging directory.
+> Copy the ansible-configuration.sh, hosts-dev.ini, ansible.cfg to the S3 bucket.
+
+> Create a logging directory named "logging" in the S3 bucket.
  
 > Provision an Ansible server (I used centos (latest version)). 
  
