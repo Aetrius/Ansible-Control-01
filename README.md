@@ -19,18 +19,30 @@ setup-env.yml
 
 ## Requirements: AWS IAM & EC2
 > Create an IAM role with permissions for EC2 to have access to the S3 bucket needed for the configuration file.
+ 
 > Create an S3 bucket i.e. ansible-configuration-master
+ 
 > Copy the ansible-configuration.sh to the S3 bucket, hosts-dev.ini to the S3 bucket, and create a logging directory.
+ 
 > Provision an Ansible server (I used centos (latest version)). 
->> Build an EC2 instance.
+ 
+> Build an EC2 instance.
 
 
 ## Install Ansible on Centos
->> sudo amazon-linux-extras install ansible2
+```
+sudo amazon-linux-extras install ansible2
+```
 
 ## Setup Ansible Automated Pull
->> aws s3 cp s3://ansible-configuration-master/ansible-configuration.sh
->> crontab -e 
-
+```
+aws s3 cp s3://ansible-configuration-master/ansible-configuration.sh
+```
+```
+chmod u+x ansible-configuration.sh
+```
+```
+crontab -e 
+```
 
 >> [* * * * * /home/ec2-user/ansible-configuration.sh]
