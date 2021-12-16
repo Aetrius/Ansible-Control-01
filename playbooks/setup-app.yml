@@ -1,0 +1,20 @@
+# setup-app.yml
+
+---
+  - hosts: webservers
+    become: true
+    tasks: 
+      - name: Upload Web-application file
+        vars:
+          ansible_python_interpreter: /usr/bin/python
+        aws_s3:
+          bucket: ansible-website-repository
+          object: index.php
+          dest: /var/www/html/index.php
+          mode: get
+          
+      - name: Change file permissions
+        ansible.builtin.file:
+          path: /var/www/html/index.php
+          state: touch
+          mode: 0755
