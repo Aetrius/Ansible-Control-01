@@ -2,3 +2,7 @@
 
 
 # ansible -m shell -a "uname" webservers:loadbalancers
+
+# docs.ansible.com/ansible/latest/modules/modules_by_category.html
+
+# ansible-playbook ping.yml

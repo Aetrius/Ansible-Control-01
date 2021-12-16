@@ -26,6 +26,10 @@ ansible.cfg
 > Copy the ansible-configuration.sh, hosts-dev.ini, ansible.cfg to the S3 bucket.
 
 > Create a logging directory named "logging" in the S3 bucket.
+
+> Create a playbooks directory name "playbooks" in the S3 bucket.
+
+> Create a playbooks logging directory named "playbook-log" in the S3 bucket.
  
 > Provision an Ansible server (I used centos (latest version)). 
  
