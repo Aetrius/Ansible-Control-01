@@ -52,7 +52,7 @@ crontab -e
 >> [* * * * * /home/ec2-user/ansible-configuration.sh]
 
 
-Copy the keypair 
+Copy the keypair from S3 bucket to the VM (ssh directory)
 ```
 aws s3 cp s3://ansible-configuration-master/ansible-key.pem /home/ec2-user/.ssh/ansible-key.pem
 ```
