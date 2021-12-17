@@ -1,17 +1,19 @@
+#!/bin/sh
+
 [Unit]
 Description=Prometheus Server
 Documentation=https://prometheus.io/docs/introduction/overview/
 After=network-online.target
 
 [Service]
-User=prometheus
+User=ec2-user
 Restart=on-failure
 
 #Change this line if you download the 
 #Prometheus on different path user
 ExecStart=/home/ec2-user/prometheus/prometheus \
-  --config.file=/home/ec2-user/prometheus/prometheus.yml \
-  --storage.tsdb.path=/home/ec2-user/prometheus/data
+  --config.file=/home/ec2-user/prometheus/prometheus/prometheus.yml \
+  --storage.tsdb.path=/home/ec2-user/prometheus/prometheus/data
 
 [Install]
 WantedBy=multi-user.target

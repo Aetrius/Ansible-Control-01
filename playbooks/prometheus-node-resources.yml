@@ -18,16 +18,13 @@
       - name: Unarchive prometheus services
         ansible.builtin.unarchive:
           src: /home/ec2-user/prometheus-2.2.1.linux-amd64.tar.gz
-          dest: /home/ec2-user/prometheus
+          dest: /home/ec2-user
           mode: 0755
           remote_src: yes
           
-      - name: Rename folder
-        copy: 
-          remote_src: yes 
-          src: /home/ec2-user/prometheus/prometheus-2.2.1.linux-amd64
-          dest: /home/ec2-user/prometheus/prometheus/
-          
+      - name: rename folder
+        command: mv /home/ec2-user/prometheus-2.2.1.linux-amd64 /home/ec2-user/prometheus/prometheus
+                   
       - name: Create Prometheus user/prometheus
         ansible.builtin.user:
           name: prometheus
