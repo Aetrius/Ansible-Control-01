@@ -1,0 +1,55 @@
+# prometheus-node-resources.yml
+
+---
+  - hosts: webservers
+    become: true
+    tasks:
+      - name: Installing prometheus services
+        get_url:
+          url: https://github.com/prometheus/prometheus/releases/download/v2.2.1/prometheus-2.2.1.linux-amd64.tar.gz
+          dest: /home/ec2-user/prometheus-2.2.1.linux-amd64.tar.gz
+          mode: 0755
+
+      - name: create directory to unarch
+        file:
+          path: /home/ec2-user/prometheus
+          state: directory
+          
+      - name: Unarchive prometheus services
+        ansible.builtin.unarchive:
+          src: /home/ec2-user/prometheus-2.2.1.linux-amd64.tar.gz
+          dest: /home/ec2-user/prometheus
+          mode: 0755
+          remote_src: yes
+          
+      - name: Rename folder
+        copy: 
+          remote_src: yes 
+          src: /home/ec2-user/prometheus/prometheus-2.2.1.linux-amd64
+          dest: /home/ec2-user/prometheus/prometheus/
+          
+      - name: Create Prometheus user/prometheus
+        ansible.builtin.user:
+          name: prometheus
+          shell: /bin/bash
+          create_home: true        
+      
+      - name: Grab prometheus configuration
+        amazon.aws.aws_s3:
+          bucket: ansible-configuration-master
+          object: /prometheus-configuration/prometheus.service
+          dest: /etc/init.d/prometheus.service
+          mode: get
+          
+      - name: Set prometheus to execute
+        ansible.builtin.file:
+          path: /etc/init.d/prometheus.service
+          owner: ec2-user
+          mode: 777
+          
+      - name: Restart daemon
+        ansible.builtin.sysvinit:
+          name: prometheus.service
+          daemonize: yes
+          enabled: yes
+          state: restarted

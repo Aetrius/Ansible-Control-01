@@ -63,3 +63,8 @@ aws s3 cp s3://ansible-configuration-master/ansible-key.pem /home/ec2-user/.ssh/
 ```
 sudo chmod 600 /home/ec2-user/.ssh/ansible-key.pem
 ```
+
+Copy the Load Balancer Config to the config directory.
+```
+aws s3 cp s3://ansible-configuration-master/lb-config.j2 config/lb-config.j2
+```
